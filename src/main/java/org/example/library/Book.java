@@ -1,61 +1,46 @@
 package org.example.library;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jdk.jfr.Name;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "book")
 @Data
 public class Book {
-
     @Id
-    private Long id;
+    private int id;
+    @Column(nullable = false)
+    private String name;
+    @Column(nullable = false)
+    private int year;
+    @Column(nullable = false)
+    private String author;
+    @Column(nullable = false)
+    private String popularity;
 
-    public void setId(Long id) {
+    protected Book() {
+
+    }
+
+    public Book(int id, String name, int year, String author, String popularity) {
         this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
         this.year = year;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public String getPopularity() {
-        return popularity;
-    }
-
-    public void setPopularity(String popularity) {
         this.popularity = popularity;
     }
 
-    private String name;
-    private int year;
-    private String author;
-    private String popularity;
+    public Book(String name) {
+        this.name = name;
+    }
 }
