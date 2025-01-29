@@ -3,12 +3,21 @@ package org.example.library;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Data;
+
 @SpringBootApplication
 public class LibraryApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(LibraryApplication.class, args);
-        String test = "Chto-to ya zaputalsya";
-        System.out.println(test);
+        Book test = new Book();
+        test.setName("Test");
+        test.setAuthor("Me");
+        test.setId(6L);
+        test.setPopularity("1");
+
     }
 }
