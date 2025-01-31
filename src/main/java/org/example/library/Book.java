@@ -3,6 +3,7 @@ package org.example.library;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.LinkedHashSet;
@@ -12,10 +13,12 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "book")
+@NoArgsConstructor
 @Data
 public class Book {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int id;
+    private long id;
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
@@ -24,16 +27,11 @@ public class Book {
     private String author;
     @Column(nullable = false)
     private String popularity;
-    private String book;
 
     @OneToMany(mappedBy = "book")
     private Set<Transaction> transactions = new LinkedHashSet<>();
 
-    public Book() {
-
-    }
-
-    public Book(int id, String name, int year, String author, String popularity) {
+    public Book (long id, String name, int year, String author, String popularity) {
         this.id = id;
         this.name = name;
         this.year = year;
