@@ -1,15 +1,12 @@
 package org.example.library;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jdk.jfr.Name;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -27,8 +24,12 @@ public class Book {
     private String author;
     @Column(nullable = false)
     private String popularity;
+    private String book;
 
-    protected Book() {
+    @OneToMany(mappedBy = "book")
+    private Set<Transaction> transactions = new LinkedHashSet<>();
+
+    public Book() {
 
     }
 
@@ -40,7 +41,13 @@ public class Book {
         this.popularity = popularity;
     }
 
-    public Book(String name) {
-        this.name = name;
+    @Override
+    public String toString() {
+        return "Book" + "\n" +
+                "id=" + id + "\n" +
+                "name=" + name + "\n" +
+                "year=" + year + "\n" +
+                "author=" + author + "\n" +
+                "popularity=" + popularity + "\n";
     }
 }
