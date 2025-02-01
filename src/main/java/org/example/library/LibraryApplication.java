@@ -7,7 +7,6 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.transaction.annotation.Transactional;
 
-
 @SpringBootApplication
 public class LibraryApplication {
 
@@ -26,14 +25,16 @@ public class LibraryApplication {
     @Transactional
     public void applicationReady() {
         try {
-
-            Book testBook = new Book(7L, "Test", 1998, "Me", "1");
-            bookRepository.save(testBook);
+            Book book1 = new Book("Elden Ring artbook", 2023L, "BANDAI NAMCO", "30");
+            Book book2 = new Book("1984", 1949L, "George Orwell", "84");
+            bookRepository.save(book1);
+            bookRepository.save(book2);
+            bookRepository.flush();
             System.out.println("Книги успешно добавлены в базу данных!");
-        } catch (
-                Exception exception) {
+        } catch (Exception exception) {
             System.err.println("Ошибка при добавлении книг в базу данных: " + exception.getMessage());
             exception.printStackTrace();
+            throw exception;
         }
     }
 }
