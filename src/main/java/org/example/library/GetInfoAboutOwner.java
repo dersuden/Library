@@ -17,7 +17,7 @@ public class GetInfoAboutOwner {
                 String ownerName = resultSet.getString("owner_name");
                 String email = resultSet.getString("email");
                 String number = resultSet.getString("number");
-                String info = "Данные: " + "\n" + "id: " + id + "\n" + "Имя владельца книги: " + ownerName + "\n" + "Почта владельца книги: " + email + "\n" + "Личный номер владельца книги: " + number + "\n";
+                String info = "Данные: " + "\n" + "id: " + id + "\n" + "ФИО читателя: " + ownerName + "\n" + "Почта читателя: " + email + "\n" + "Телефон читателя: " + number + "\n";
                 System.out.println(info);
             }
         } catch (SQLException e) {

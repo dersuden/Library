@@ -12,7 +12,9 @@ public class LibraryApplication {
         GetInfoAboutOwner getInfoAboutOwner = new GetInfoAboutOwner();
         AddBook addBook = new AddBook();
         AddOwner addOwner = new AddOwner();
-BorrowBook borrowBook = new BorrowBook();
-borrowBook.borrowBook();
+        BorrowBook borrowBook = new BorrowBook();
+        getInfoAboutBook.getInfo();
+        getInfoAboutOwner.getInfoAboutOwner();
+        borrowBook.borrowBook();
     }
 }
